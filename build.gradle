@@ -1,0 +1,45 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'idea'
+
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
+    }
+}
+apply plugin: 'com.github.johnrengelman.shadow'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "4.2.1"
+}
+
+mainClassName = 'com.dlaptev.elevator.Main'
+jar {
+    baseName = 'elevator'
+    version = '1.0.0'
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}
+
+shadowJar {
+    baseName = 'elevator'
+    version = '1.0.0'
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+    classifier = null
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+dependencies {
+    compile 'commons-cli:commons-cli:1.4'
+}
