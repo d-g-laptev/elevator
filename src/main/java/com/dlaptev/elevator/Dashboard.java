@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 class Dashboard implements Runnable {
+    private static boolean firstRun = true;
     private final Elevator elevator;
 
     Dashboard(Elevator elevator) {
@@ -54,10 +55,14 @@ class Dashboard implements Runnable {
     }
 
     private static String readStringFromCmd() throws IOException {
+        if (firstRun) {
+            System.err.println("Call elevator, format:");
+            System.err.println("1. Floor from-to (11-1, 12-20, etc...)");
+            System.err.println("2. Inside elevator: floor to (5, 10, etc...)");
+            firstRun = false;
+        }
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.err.println("Call elevator, format:");
-        System.err.println("1. Floor from-to (11-1, 12-20, etc...)");
-        System.err.println("2. Inside elevator: floor to (5, 10, etc...)");
         return br.readLine();
     }
 }
