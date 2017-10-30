@@ -54,6 +54,7 @@ abstract class AbstractElevator implements Runnable {
         System.out.println("Close doors");
     }
 
+    @SuppressWarnings("UseCompareMethod")
     private int getDelta(int fl) {
         return (fl > currentFloor) ? 1 : ((fl == currentFloor) ? 0 : -1);
     }
