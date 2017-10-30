@@ -41,7 +41,7 @@ public class Elevator extends AbstractElevator {
             while (list.iterator().hasNext()) {
                 Integer fl = list.iterator().next();
 
-                while (!fl.equals(currentFloor)) {
+                while (!fl.equals(currentFloor) && !list.contains(currentFloor)) {
                     try {
                         goToNextFloor(fl);
                     } catch (InterruptedException e) {
