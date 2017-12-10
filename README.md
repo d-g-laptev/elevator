@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/d-g-laptev/elevator.svg?branch=master)](https://travis-ci.org/d-g-laptev/elevator)
+
 # Elevator simulator
 
 # Build:
